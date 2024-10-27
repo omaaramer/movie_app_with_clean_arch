@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app_with_clean_arch/core/services/services_locator.dart';
+import 'package:movie_app_with_clean_arch/core/utils/app_string.dart';
+import 'package:movie_app_with_clean_arch/movies/presentation/screens/movies_screen.dart';
 
 void main() {
-  runApp(const MovieApp());
+  ServicesLocator().init();
+  runApp(const MyApp());
 }
 
-class MovieApp extends StatelessWidget {
-  const MovieApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      title: AppString.appName,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Colors.grey.shade900,
+      ),
+      home: const MoviesScreen(),
+    );
   }
 }
